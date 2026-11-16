@@ -24,4 +24,44 @@ describe("ユーザー登録フォームのテスト", () => {
 
     expect(screen.queryByText("名前は必須です")).not.toBeInTheDocument();
   });
+
+  it("メールアドレスが空欄ならエラーを表示する", async () => {
+    const user = userEvent.setup();
+
+    render(<RegisterForm />);
+
+    await user.type(screen.getByLabelText("名前"), "Taro");
+    await user.click(screen.getByRole("button", { name: "登録"}));
+
+    expect(
+      screen.getByText("メールアドレスは必須です")
+    ).toBeInTheDocument();
   });
+
+  it("メールアドレスの形式が不正ならエラーを表示する", async () => {
+    const user = userEvent.setup();
+
+    render(<RegisterForm />);
+
+    await user.type(screen.getByLabelText("名前"), "Taro");
+    await user.type(screen.getByLabelText("メールアドレス"), "test-example");
+    await user.click(screen.getByRole("button", { name: "登録"}));
+
+    expect (
+      screen.getByText("メールアドレスの形式が正しくありません")
+    ).toBeInTheDocument();
+  });
+
+  it("正しいメールアドレスならエラーが表示されない", async () => {
+    const user = userEvent.setup();
+
+    render(<RegisterForm />);
+
+    await user.type(screen.getByLabelText("名前"), "Taro");
+    await user.type(screen.getByLabelText("メールアドレス"), "test@example.com");
+    await user.click(screen.getByRole("button", { name: "登録"}));
+
+    expect(screen.queryByText("メールアドレスは必須です")).not.toBeInTheDocument();
+    expect(screen.queryByText("メールアドレスの形式が正しくありません")).not.toBeInTheDocument();
+  });
+});
