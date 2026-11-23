@@ -1,195 +1,159 @@
 Testing Practice
 
-React / TypeScript を使用したテスト・CI/CDの学習プロジェクト
-
-単体テスト・結合テストの実装から、CI/CDによるテスト・ビルド・デプロイの自動化まで構築しました。
-
-Live Demo ｜ GitHub Repository
-
-目次
-
-概要
-
-使用技術
-
-実装内容
-
-CI/CDの構成
-
-起動方法
-
-学習目的
-
-概要
-
-Webアプリケーション開発におけるテストの基本と、開発工程の自動化を学習するために作成したプロジェクトです。
-
-項目
-
-内容
-
-プロジェクト名
-
-Testing Practice
-
-フロントエンド
-
-React / TypeScript
-
-開発環境
-
-Vite
-
-テスト環境
-
-Vitest
-
-公開環境
-
-Vercel
-
-使用技術
-
-技術
-
-用途
-
-React
-
-UI構築
-
-TypeScript
-
-型安全な開発
-
-Vite
-
-開発環境・ビルド
-
-Vitest
-
-単体テスト
-
-React Testing Library
-
-コンポーネントテスト
-
-MSW
-
-APIモック
-
-GitHub Actions
-
-CI
-
-Vercel
-
-CD・デプロイ
-
-実装内容
-
-1. 単体テスト（Unit Testing）
-
-使用技術：Vitest
-
-関数やコンポーネントの動作確認
-
-正常系・異常系のテスト
-
-モック関数（vi.fn()）を使用したテスト
-
-2. 結合テスト（Integration Testing）
-
-使用技術：React Testing Library / MSW
-
-APIから取得したデータの表示確認
-
-ローディング状態の確認
-
-API通信失敗時のエラー表示確認
-
-MSWによるAPIレスポンスのモック
-
-3. CI（継続的インテグレーション）
-
-使用技術：GitHub Actions
-
-GitHubへのPushやPull Requestをきっかけに、以下を自動実行する仕組みを構築しました。
-
-テストの自動実行
-
-TypeScriptの型チェック
-
-本番用ビルドの確認
-
-4. CD（継続的デプロイ）
-
-使用技術：Vercel
-
-GitHubリポジトリとVercelを連携し、main ブランチへのPushをきっかけに自動デプロイする仕組みを構築しました。
-
-GitHubとの連携
-
-本番環境への自動デプロイ
-
-公開URLでの動作確認
-
-CI/CDの構成
-
-       GitHub Push
-            |
-      +-----+-----+
-      |           |
-      v           v
- GitHub Actions  Vercel
-      |           |
-   +--+--+        v
-   |     |      Build
-   v     v        |
- Test  Build      v
-   |     |      Deploy
-   +--+--+        |
-      |           v
-   CI完了       Production
-
-※ GitHub ActionsによるCIとVercelによるデプロイは、現在それぞれ独立して実行されます。
-
-起動方法
-
-1. リポジトリをクローン
+<p align="center">
+  <strong>React / TypeScript を使用したテスト・CI/CDの学習プロジェクト</strong>
+</p>
+
+<p align="center">
+  単体テスト・結合テストの実装から、CI/CDによるテスト・ビルド・デプロイの自動化まで構築しました。
+</p>
+
+<p align="center">
+  <a href="https://testing-practice.vercel.app/">Live Demo</a>
+  &nbsp; | &nbsp;
+  <a href="https://github.com/yuito-code/testing-practice">GitHub Repository</a>
+</p>
+
+<h2 align="center">Tech Stack</h2>
+
+<table align="center">
+  <tr>
+    <th>Category</th>
+    <th>Technology</th>
+  </tr>
+  <tr>
+    <td>Frontend</td>
+    <td>React / TypeScript / Vite</td>
+  </tr>
+  <tr>
+    <td>Unit Testing</td>
+    <td>Vitest</td>
+  </tr>
+  <tr>
+    <td>Integration Testing</td>
+    <td>React Testing Library / MSW</td>
+  </tr>
+  <tr>
+    <td>CI</td>
+    <td>GitHub Actions</td>
+  </tr>
+  <tr>
+    <td>CD</td>
+    <td>Vercel</td>
+  </tr>
+</table>
+
+<h2>Implementation</h2>
+
+<section>
+<h3>01. Unit Testing</h3>
+
+<p><strong>Vitest</strong></p>
+
+<ul>
+  <li>関数やコンポーネントの動作確認</li>
+  <li>正常系・異常系のテスト</li>
+  <li>モック関数（vi.fn()）を使用したテスト</li>
+</ul>
+</section>
+
+<section>
+<h3>02. Integration Testing</h3>
+
+<p><strong>React Testing Library / MSW</strong></p>
+
+<ul>
+  <li>APIから取得したデータの表示確認</li>
+  <li>ローディング状態の確認</li>
+  <li>API通信失敗時のエラー表示確認</li>
+  <li>MSWによるAPIレスポンスのモック</li>
+</ul>
+</section>
+
+<section>
+<h3>03. Continuous Integration</h3>
+
+<p><strong>GitHub Actions</strong></p>
+
+<ul>
+  <li>Push・Pull Request時の自動実行</li>
+  <li>テストの自動実行</li>
+  <li>TypeScriptの型チェック・ビルド確認</li>
+</ul>
+</section>
+
+<section>
+<h3>04. Continuous Deployment</h3>
+
+<p><strong>Vercel</strong></p>
+
+<ul>
+  <li>GitHubリポジトリとの連携</li>
+  <li>mainブランチへのPushによる自動デプロイ</li>
+  <li>本番環境への公開</li>
+</ul>
+</section>
+
+<h2>CI/CD Workflow</h2>
+
+<pre align="center">
+GitHub Push
+     |
+     +------------------+
+     |                  |
+     v                  v
+GitHub Actions        Vercel
+     |                  |
+  +--+--+               v
+  |     |             Build
+  v     v               |
+ Test  Build            v
+  |     |             Deploy
+  +--+--+               |
+     |                  v
+  CI Complete        Production
+</pre>
+
+<p><strong>Note:</strong> GitHub ActionsによるCIとVercelによるデプロイは、それぞれ独立して実行されます。</p>
+
+<h2>Getting Started</h2>
+
+<details>
+<summary><strong>セットアップ・実行方法を表示</strong></summary>
+
+<h3>1. Clone Repository</h3>
 
 git clone https://github.com/yuito-code/testing-practice.git
-
-2. ディレクトリへ移動
-
 cd testing-practice
 
-3. パッケージをインストール
+<h3>2. Install Dependencies</h3>
 
 npm install
 
-4. 開発サーバーを起動
+<h3>3. Start Development Server</h3>
 
 npm run dev
 
-5. テストを実行
+<h3>4. Run Tests</h3>
 
 npx vitest run
 
-6. ビルドを実行
+<h3>5. Build</h3>
 
 npm run build
 
-学習目的
+</details>
 
-本プロジェクトでは、以下の内容を習得することを目的としています。
+<h2>Learning Objectives</h2>
 
-テストコードの基本的な書き方と設計
+<p>
+  Webアプリケーション開発における品質管理と、開発工程の自動化について理解を深めることを目的としています。
+</p>
 
-単体テストと結合テストの違い
-
-API通信を含むコンポーネントのテスト
-
-CI/CDの仕組みと自動化
-
-開発からデプロイまでの一連の流れ
+<ul>
+  <li>テストコードの設計・実装</li>
+  <li>単体テストと結合テストの理解</li>
+  <li>API通信を含むコンポーネントのテスト</li>
+  <li>CI/CDによる開発工程の自動化</li>
+  <li>開発からデプロイまでの一連の流れ</li>
+</ul>
