@@ -1,75 +1,77 @@
-# React + TypeScript + Vite
+testing-practice
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React・TypeScriptを使用した、単体テスト・結合テスト・CI/CDの学習用プロジェクトです。
 
-Currently, two official plugins are available:
+テストコードの実装から、GitHub Actionsによるテスト・ビルドの自動実行、Vercelによる自動デプロイまで一通り構築しました。
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+デモ
 
-## React Compiler
+公開URL：https://testing-practice.vercel.app/
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+GitHub：https://github.com/yuito-code/testing-practice
 
-## Expanding the ESLint configuration
+使用技術
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+React
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+TypeScript
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Vite
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Vitest
 
-```
+React Testing Library
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+MSW
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+GitHub Actions
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Vercel
 
-```
+実装・学習内容
+
+1. 単体テスト
+
+Vitestを使用して、関数やコンポーネントの動作をテストしました。
+
+describe / it / expect を使用したテスト作成
+
+正常系・異常系のテスト
+
+モック関数（vi.fn()）を使用したテスト
+
+2. 結合テスト
+
+React Testing LibraryとMSWを使用して、コンポーネントとAPIの連携をテストしました。
+
+APIから取得したデータの表示確認
+
+ローディング状態の確認
+
+API通信失敗時のエラー表示確認
+
+MSWによるAPIレスポンスのモック
+
+3. CI（継続的インテグレーション）
+
+GitHub Actionsを使用して、GitHubへのPushやPull Requestをきっかけに自動でテスト・ビルドを実行する仕組みを構築しました。
+
+テストの自動実行
+
+TypeScriptの型チェック
+
+本番用ビルドの確認
+
+4. CD（継続的デリバリー・デプロイ）
+
+VercelとGitHubリポジトリを連携し、mainブランチへのPushをきっかけに自動デプロイされる仕組みを構築しました。
+
+Vercelによる本番環境へのデプロイ
+
+GitHubへのPushをきっかけとした自動デプロイ
+
+デプロイ後の公開URLでの動作確認
+
+学習目的
+
+Webアプリケーション開発におけるテストの重要性を理解し、品質を保ちながら開発を進めるための基本的なテスト手法とCI/CDの仕組みを習得することを目的としています。
