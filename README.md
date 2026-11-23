@@ -1,48 +1,47 @@
-testing-practice
+🧪 Testing Practice
 
-React・TypeScriptを使用した、単体テスト・結合テスト・CI/CDの学習用プロジェクトです。
+React・TypeScriptを使用したテスト・CI/CDの学習プロジェクト
 
-テストコードの実装から、GitHub Actionsによるテスト・ビルドの自動実行、Vercelによる自動デプロイまで一通り構築しました。
+単体テスト・結合テストの実装から、GitHub ActionsによるCI、Vercelによる自動デプロイまで構築しました。
 
-デモ
+<p align="center">
+  <a href="https://testing-practice.vercel.app/">
+    <strong>🌐 Live Demo</strong>
+  </a>
+  &nbsp; | &nbsp;
+  <a href="https://github.com/yuito-code/testing-practice">
+    <strong>📂 GitHub Repository</strong>
+  </a>
+</p>
 
-公開URL：https://testing-practice.vercel.app/
+🛠 Tech Stack
 
-GitHub：https://github.com/yuito-code/testing-practice
+<p align="left">
+  <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black" />
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" />
+  <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" />
+  <img src="https://img.shields.io/badge/Vitest-6E9F18?style=for-the-badge&logo=vitest&logoColor=white" />
+  <img src="https://img.shields.io/badge/Testing_Library-E33332?style=for-the-badge&logo=testinglibrary&logoColor=white" />
+  <img src="https://img.shields.io/badge/MSW-FF6A33?style=for-the-badge&logo=msw&logoColor=white" />
+  <img src="https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white" />
+  <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" />
+</p>
 
-使用技術
+📋 Features & Implementation
 
-React
-
-TypeScript
-
-Vite
+01. Unit Testing
 
 Vitest
-
-React Testing Library
-
-MSW
-
-GitHub Actions
-
-Vercel
-
-実装・学習内容
-
-1. 単体テスト
-
-Vitestを使用して、関数やコンポーネントの動作をテストしました。
 
 describe / it / expect を使用したテスト作成
 
 正常系・異常系のテスト
 
-モック関数（vi.fn()）を使用したテスト
+vi.fn() によるモック関数の利用
 
-2. 結合テスト
+02. Integration Testing
 
-React Testing LibraryとMSWを使用して、コンポーネントとAPIの連携をテストしました。
+React Testing Library / MSW
 
 APIから取得したデータの表示確認
 
@@ -52,26 +51,81 @@ API通信失敗時のエラー表示確認
 
 MSWによるAPIレスポンスのモック
 
-3. CI（継続的インテグレーション）
+03. Continuous Integration
 
-GitHub Actionsを使用して、GitHubへのPushやPull Requestをきっかけに自動でテスト・ビルドを実行する仕組みを構築しました。
+GitHub Actions
 
-テストの自動実行
+Push・Pull Requestをきっかけに自動実行
 
-TypeScriptの型チェック
+Vitestによるテストの自動実行
 
-本番用ビルドの確認
+TypeScriptの型チェック・ビルド確認
 
-4. CD（継続的デリバリー・デプロイ）
+04. Continuous Deployment
 
-VercelとGitHubリポジトリを連携し、mainブランチへのPushをきっかけに自動デプロイされる仕組みを構築しました。
+Vercel
 
-Vercelによる本番環境へのデプロイ
+GitHubリポジトリとの連携
 
-GitHubへのPushをきっかけとした自動デプロイ
+main ブランチへのPushによる自動デプロイ
 
-デプロイ後の公開URLでの動作確認
+公開URLでの動作確認
 
-学習目的
+🔄 CI/CD Workflow
 
-Webアプリケーション開発におけるテストの重要性を理解し、品質を保ちながら開発を進めるための基本的なテスト手法とCI/CDの仕組みを習得することを目的としています。
+        GitHub Push
+             |
+             v
+      GitHub Actions
+             |
+       +-----+-----+
+       |           |
+       v           v
+    Testing      Build
+       |           |
+       +-----+-----+
+             |
+             v
+        CI Success
+
+        Vercel
+           |
+           v
+     Auto Deployment
+           |
+           v
+      Production
+
+※ GitHub ActionsのCIとVercelのデプロイは、それぞれ独立して実行されます。
+
+🎯 Learning Objectives
+
+Webアプリケーション開発における品質管理を理解し、以下のスキルを身につけることを目的としています。
+
+テストコードの設計・実装
+
+API通信を含むコンポーネントのテスト
+
+CI/CDの基本的な仕組みの理解
+
+開発からデプロイまでの自動化
+
+🚀 Getting Started
+
+# リポジトリをクローン
+git clone https://github.com/yuito-code/testing-practice.git
+
+# ディレクトリに移動
+cd testing-practice
+
+# パッケージをインストール
+npm install
+
+# 開発サーバー起動
+npm run dev
+
+# テスト実行
+npx vitest run
+
+# ビルド
+npm run build
