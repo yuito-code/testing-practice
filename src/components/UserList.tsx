@@ -28,7 +28,7 @@ const UserList = () => {
 
   return (
     <div>
-      <h2>ユーザー一覧</h2>
+      <h2>ユーザー一覧 (自動デプロイ確認)</h2>
 
       {users.map((user) => (
         <p key={user.id}>{user.name}</p>
